@@ -1,0 +1,44 @@
+Bill of Materials file for the SDL2-based Game Engine (SGE) v 2021203
+=====================================================================
+
+This is the bill of material file with the SDL2-based Game Engine (SGE for short). The SGE was developed by Joseph21 
+and is heavily inspired bij the Pixel Game Engine (PGE) by Javidx9. It's interface is deliberately kept very close to 
+that of the PGE, so that programs can be ported from the one to the other quite easily.
+
+The SGE is not complete in it's functionality when compared with the PGE. On the other hand, the SGE has some 
+features that are not available in the PGE. In particual the ability to work with multiple windows was the main 
+reason for me to develop the SGE. 
+
+The following files are part of this package (each header file contains a description of the functionality offered 
+from that module):
+
+  SGE_Core.h       & SGE_Core.cpp       - core functions and overridables of the engine
+  SGE_Draw.h       & SGE_Draw.cpp       - contains all the drawing primitives of the engine
+  SGE_FontData.h   & SGE_FontData.cpp   - offers built in fonts to use with the engine
+  SGE_Periferals.h & SGE_Periferals.cpp - functions to query state of keyboard and mouse
+  SGE_Pixel.h      & SGE_Pixel.cpp      - pixel definition, operators on pixels, predefined colours
+  SGE_Sound.h      & SGE_Sound.cpp      - wrapper around SDL2 sound functionality (music and effects)
+  SGE_Sprite.h     & SGE_Sprite.cpp     - sprite and decal classes and lookalikes
+  SGE_Utilities.h  & SGE_Utilities.cpp  - contains some global variables and miscellaneous stuff
+  SGE_Window.h     & SGE_Window.cpp     - class SGE_Window to create and manage multiple windows simultaneously from 
+                                          one thread
+
+  MuTimer.h        & MuTimer.cpp        - timing and profiling functions (in micro seconds - hence the Mu)
+
+  main.cpp                              - a test program (courtesy of Javidx9) that shows random pixels on a screen
+
+  licence 20221203.txt                  - description of the license that comes with this software
+  BoM 20221203.txt                      - this bill of materials file
+
+Dependencies
+  * You need SDL2 installed to run the SGE. This means all header files, libraries and DLL's that come with and/or 
+    are needed to compile for SDL2. The engine was developed on SDL2 v 2.0.5;
+  * The same holds for SDL_image (v. 2.0.1);
+  * The same holds for SDL_Mixer (v. 2.0.4);
+
+If you have any questions, improvements, bug reports, compliments or whatever, please let me know.
+
+Have fun with it!
+
+Joseph21
+december 3, 2022
