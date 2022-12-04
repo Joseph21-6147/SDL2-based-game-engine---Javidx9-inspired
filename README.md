@@ -1,6 +1,6 @@
 # SDL2-based-game-engine
 
-The SGE was developed by Joseph21 and is heavily inspired bij the Pixel Game Engine (PGE) by Javidx9 
+The SDL2-based Game Engine (or SGE for short) is heavily inspired bij the Pixel Game Engine (PGE) by Javidx9 
 (see: https://github.com/OneLoneCoder/olcPixelGameEngine). It's interface is deliberately kept very 
 close to that of the PGE, so that programs can be ported from the one to the other quite easily.
 
