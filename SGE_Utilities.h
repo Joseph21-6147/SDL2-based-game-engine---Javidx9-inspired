@@ -30,8 +30,7 @@
 
 #include <SDL.h>
 
-#include "vector_types.h"
-#include   "my_utility.h"
+#include "SGE_vector_types.h"
 
 //                               +-----------+                               //
 // ------------------------------+ CONSTANTS +------------------------------ //
@@ -39,6 +38,10 @@
 
 #define DEBUG_MODE        false
 #define DEBUG_FILE_NAME   "debug_out.txt"
+
+#define PI  3.1415926535f
+
+#define ALIGN_STRLEN     14  // default length for string alignment
 
 //                           +------------------+                            //
 // --------------------------+ GLOBAL VARIABLES +--------------------------- //
@@ -54,6 +57,30 @@ extern SDL_Renderer    *glbRendererPtr;
 //                              +------------+                               //
 // -----------------------------+ PROTOTYPES +------------------------------ //
 //                              +------------+                               //
+
+// translate val into it's corresponding hexadecimal representation.
+// e.g. 0 translates to '0' and 15 translates to 'F'.
+// val must be in [0, 15]
+char        to_hex_position( uint8_t val );
+// translates val into its corresponding hexadecimal representation.
+// since val is 32 bits, it translates into a string of length 8.
+std::string to_hex( uint32_t val );
+
+// functions produce an aligned string of length positions containing nValue
+std::string right_align( int nValue, int positions );
+std::string  left_align( int nValue, int positions );
+std::string right_align( std::string &s, int positions );
+std::string  left_align( std::string &s, int positions );
+// fValue resp. s contains a floating point number which may (or may not) have a
+// dot in it. Align the dot of this number on dotPosition, creating a string of
+// totalPositions
+std::string dot_align( float fValue  , int dotPosition, int totalPositions );
+std::string dot_align( std::string &s, int dotPosition, int totalPositions );
+
+// return the clamped value of a in [ a_start, a_end ]
+int   Clamp( int   a, int   a_start, int   a_end );
+float Clamp( float a, float a_start, float a_end );
+
 
 namespace flc {
 

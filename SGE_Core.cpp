@@ -124,8 +124,8 @@ bool flc::SDL_GameEngine::Construct( int nWinSizeX, int nWinSizeY,
                                      bool bFullScreen, bool bVsynced ) {
 
     if (DIAG_OUTPUT) {
-        std::cout << "SDL Game Engine (SGE) - by Joseph21" << std::endl;
-        std::cout << "===================================" << std::endl << std::endl;
+        std::cout << DIAG_TITLE1 << std::endl;
+        std::cout << DIAG_TITLE2 << std::endl << std::endl;
         std::cout << "Construct() --> setting up global pixel format info, ";
     }
 

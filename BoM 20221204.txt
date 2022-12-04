@@ -1,4 +1,4 @@
-Bill of Materials file for the SDL2-based Game Engine (SGE) v 2021203
+Bill of Materials file for the SDL2-based Game Engine (SGE) v.2021204
 =====================================================================
 
 This is the bill of material file with the SDL2-based Game Engine (SGE for short). The SGE was developed by Joseph21 
@@ -19,16 +19,16 @@ from that module):
   SGE_Pixel.h      & SGE_Pixel.cpp      - pixel definition, operators on pixels, predefined colours
   SGE_Sound.h      & SGE_Sound.cpp      - wrapper around SDL2 sound functionality (music and effects)
   SGE_Sprite.h     & SGE_Sprite.cpp     - sprite and decal classes and lookalikes
+  SGE_Timer.h      & SGE_Timer.cpp      - timing and profiling functions (in micro seconds)
   SGE_Utilities.h  & SGE_Utilities.cpp  - contains some global variables and miscellaneous stuff
+  SGE_vector_types.h                    - different types of 2D and 3D vector types with operators (incl. homogeneous vectors)
   SGE_Window.h     & SGE_Window.cpp     - class SGE_Window to create and manage multiple windows simultaneously from 
                                           one thread
 
-  MuTimer.h        & MuTimer.cpp        - timing and profiling functions (in micro seconds - hence the Mu)
-
   main.cpp                              - a test program (courtesy of Javidx9) that shows random pixels on a screen
 
-  licence 20221203.txt                  - description of the license that comes with this software
-  BoM 20221203.txt                      - this bill of materials file
+  licence 20221204.txt                  - description of the license that comes with this software
+  BoM 20221204.txt                      - this bill of materials file
 
 Dependencies
   * You need SDL2 installed to run the SGE. This means all header files, libraries and DLL's that come with and/or 
@@ -41,4 +41,4 @@ If you have any questions, improvements, bug reports, compliments or whatever, p
 Have fun with it!
 
 Joseph21
-december 3, 2022
+december 4, 2022

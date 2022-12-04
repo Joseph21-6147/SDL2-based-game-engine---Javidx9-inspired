@@ -60,7 +60,7 @@
 #include <SDL.h>
 
 #include "SGE_Sprite.h"
-#include "vector_types.h"
+#include "SGE_vector_types.h"
 
 //                           +------------------+                            //
 // --------------------------+ CLASS DEFINITION +--------------------------- //

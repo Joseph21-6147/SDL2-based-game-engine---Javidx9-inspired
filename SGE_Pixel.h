@@ -28,7 +28,7 @@
 
 #include <SDL.h>
 
-#include "my_utility.h"
+#include "SGE_Utilities.h"
 
 //                               +-----------+                               //
 // ------------------------------+ CONSTANTS +------------------------------ //
@@ -115,19 +115,17 @@ namespace flc {
         uint32_t Encode();
 
         // operators on pixel and scalar
-        Pixel operator *( const float rhs ) {
-            this->r = (uint8_t)(float(this->r) * rhs );
-            this->g = (uint8_t)(float(this->g) * rhs );
-            this->b = (uint8_t)(float(this->b) * rhs );
-            this->PixelClamp();
-            return *this;
+        Pixel operator *( const float rhs ) const {
+            uint8_t rVal = (uint8_t)Clamp( float(this->r) * rhs, 0.0f, 255.0f );
+            uint8_t gVal = (uint8_t)Clamp( float(this->g) * rhs, 0.0f, 255.0f );
+            uint8_t bVal = (uint8_t)Clamp( float(this->b) * rhs, 0.0f, 255.0f );
+            return Pixel( rVal, gVal, bVal );
         }
-        Pixel operator /( const float rhs ) {
-            this->r = (int)(float(this->r) / rhs );
-            this->g = (int)(float(this->g) / rhs );
-            this->b = (int)(float(this->b) / rhs );
-            this->PixelClamp();
-            return *this;
+        Pixel operator /( const float rhs ) const {
+            uint8_t rVal = (uint8_t)Clamp( float(this->r) / rhs, 0.0f, 255.0f );
+            uint8_t gVal = (uint8_t)Clamp( float(this->g) / rhs, 0.0f, 255.0f );
+            uint8_t bVal = (uint8_t)Clamp( float(this->b) / rhs, 0.0f, 255.0f );
+            return Pixel( rVal, gVal, bVal );
         }
         // operators on pixel and pixel
         Pixel operator +( const Pixel &rhs ) {

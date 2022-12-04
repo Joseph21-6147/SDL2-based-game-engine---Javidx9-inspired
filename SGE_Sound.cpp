@@ -69,7 +69,7 @@ bool flc::Music::IsPaused() {  return Mix_PausedMusic()  == 1; }
 
 // sets the volume for all music objects to value
 void flc::Music::SetVolume( float value ) {
-    m_MusicVolume = Clamp( value, 0.0f, 1.0f );
+    m_MusicVolume = std::min( 1.0f, std::max( 0.0f, value ));
     Mix_VolumeMusic( (int)((float)MIX_MAX_VOLUME * m_MusicVolume ));
 }
 
@@ -112,7 +112,7 @@ void flc::Chunk::Play( int repeats ) {
 
 // sets the volume for this chunk object to value
 void flc::Chunk::SetVolume(float value) {
-    m_ChunkVolume = Clamp( value, 0.0f, 1.0f );
+    m_ChunkVolume = std::min( 1.0f, std::max( 0.0f, value ));
     Mix_VolumeChunk( m_ChunkPtr, (int)((float)MIX_MAX_VOLUME * m_ChunkVolume ));
 }
 

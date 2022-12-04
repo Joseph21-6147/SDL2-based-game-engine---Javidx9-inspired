@@ -71,7 +71,6 @@
 #include <SDL_image.h>
 #include <SDL_mixer.h>
 
-#include "MuTimer.h"                  // personal libraries
 
 #include  "SGE_Utilities.h"           // application dependencies
 #include      "SGE_Pixel.h"
@@ -80,10 +79,14 @@
 #include       "SGE_Draw.h"
 #include      "SGE_Sound.h"
 #include     "SGE_Window.h"
+#include      "SGE_Timer.h"
 
 //                               +-----------+                               //
 // ------------------------------+ CONSTANTS +------------------------------ //
 //                               +-----------+                               //
+
+#define DIAG_TITLE1   "SDL Game Engine (SGE) v.20221204 - by Joseph21"
+#define DIAG_TITLE2   "=============================================="
 
 #define DIAG_OUTPUT          true        // do you want the engine to produce diagnostic output in console?
 #define PROF_OUTPUT          true        // same for profiler output (note: DIAG_OUTPUT must be true as well)
