@@ -174,8 +174,10 @@ flc::Pixel flc::Sprite::Sample( float u, float v ) {
         v < 0.0f || v > 1.0f)
         result = flc::MAGENTA;
     else {
-        int tmp_x = std::min( (int)round( u * (float)width  ), width  - 1 );
-        int tmp_y = std::min( (int)round( v * (float)height ), height - 1 );
+//        int tmp_x = std::min( (int)round( u * (float)width  ), width  - 1 );
+//        int tmp_y = std::min( (int)round( v * (float)height ), height - 1 );
+        int tmp_x = std::max( 0, std::min( (int)( u * (float)width  ), width  - 1 ));
+        int tmp_y = std::max( 0, std::min( (int)( v * (float)height ), height - 1 ));
         result = GetPixel( tmp_x, tmp_y );
     }
 
