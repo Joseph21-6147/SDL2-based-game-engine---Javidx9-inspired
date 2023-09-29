@@ -17,6 +17,9 @@
  *
  * Joseph21
  * december 4, 2022
+ *
+ * Change trace:
+ * 01/26/2023 - Small improvement - constant definition for the number of mouse buttons
  */
 
 #include "SGE_Core.h"
@@ -111,8 +114,8 @@ void flc::SDL_GameEngine::GetUpdateMouseState() {
     vMouse_physical = vi2d( nMouseX_physical, nMouseY_physical );
     vMouse_logical  = vi2d( nMouseX_logical,  nMouseY_logical  );
     // populate the mouse button state array
-    uint32_t nMouseMasks[3] = { SDL_BUTTON_LMASK, SDL_BUTTON_RMASK, SDL_BUTTON_MMASK };
-    for (int i = 0; i < 3; i++) {
+    uint32_t nMouseMasks[NUM_MOUSE_BUTTONS] = { SDL_BUTTON_LMASK, SDL_BUTTON_RMASK, SDL_BUTTON_MMASK };
+    for (int i = 0; i < NUM_MOUSE_BUTTONS; i++) {
         if (mse_buttons & nMouseMasks[i]) {
             SetKeyState( sMouseStates[i], (sMouseStates[i].bIdle || sMouseStates[i].bReleased) ? KEY_DOWN : KEY_REPEAT );
         } else {
