@@ -17,6 +17,9 @@
  *
  * Joseph21
  * december 4, 2022
+ *
+ * Change trace:
+ * 09/29/2023 - bug fixed in DrawPartialSprite()
  */
 
 #include "SGE_Core.h"
@@ -591,10 +594,10 @@ void flc::SDL_GameEngine::DrawSprite( int x, int y, Sprite* sprite, int scale, S
 
 // these four auxiliary lambda's are used in DrawSprite(). Using this construction I can set a function pointer to the right
 // pixel getter, instead of doing the same check for each pixel using a switch statement (or duplicating a lot of code)
-auto p_getter2_none = []( SDL_Surface *pSrfc, int _ox, int _oy, int _xs, int _ys ) { return get_pixel32( pSrfc, _ox +                 _xs , _oy +                 _ys  ); };
-auto p_getter2_hor  = []( SDL_Surface *pSrfc, int _ox, int _oy, int _xs, int _ys ) { return get_pixel32( pSrfc, _ox + (pSrfc->w - 1 - _xs), _oy +                 _ys  ); };
-auto p_getter2_ver  = []( SDL_Surface *pSrfc, int _ox, int _oy, int _xs, int _ys ) { return get_pixel32( pSrfc, _ox +                 _xs , _oy + (pSrfc->h - 1 - _ys) ); };
-auto p_getter2_both = []( SDL_Surface *pSrfc, int _ox, int _oy, int _xs, int _ys ) { return get_pixel32( pSrfc, _ox + (pSrfc->w - 1 - _xs), _oy + (pSrfc->h - 1 - _ys) ); };
+auto p_getter2_none = []( SDL_Surface *pSrfc, int _ox, int _oy, int _w, int _h, int _xs, int _ys ) { return get_pixel32( pSrfc, _ox +           _xs , _oy +           _ys  ); };
+auto p_getter2_hor  = []( SDL_Surface *pSrfc, int _ox, int _oy, int _w, int _h, int _xs, int _ys ) { return get_pixel32( pSrfc, _ox + (_w - 1 - _xs), _oy +           _ys  ); };
+auto p_getter2_ver  = []( SDL_Surface *pSrfc, int _ox, int _oy, int _w, int _h, int _xs, int _ys ) { return get_pixel32( pSrfc, _ox +           _xs , _oy + (_h - 1 - _ys) ); };
+auto p_getter2_both = []( SDL_Surface *pSrfc, int _ox, int _oy, int _w, int _h, int _xs, int _ys ) { return get_pixel32( pSrfc, _ox + (_w - 1 - _xs), _oy + (_h - 1 - _ys) ); };
 
 // Draws an area of a sprite on the screen at location (x, y), where the selected area is within the specified
 // sprite is (ox, oy) to (ox + w, oy + h). The scale must be integer > 0.
@@ -604,7 +607,7 @@ void flc::SDL_GameEngine::DrawPartialSprite( int x, int y, Sprite* sprite, int o
 
     if (scale >= 1) {
         // select the correct pixel getting function from the flip mode
-        uint32_t (*pixel_getter)( SDL_Surface *, int, int, int, int ) = nullptr;
+        uint32_t (*pixel_getter)( SDL_Surface *, int, int, int, int, int, int ) = nullptr;
         switch (flip) {
             case Sprite::NONE:  pixel_getter = p_getter2_none; break;
             case Sprite::HORIZ: pixel_getter = p_getter2_hor;  break;
@@ -620,7 +623,7 @@ void flc::SDL_GameEngine::DrawPartialSprite( int x, int y, Sprite* sprite, int o
         for (int ys = 0; ys < h; ys++) {
             for (int xs = 0; xs < w; xs++) {
                 // get the correct pixel using the right pixel_getter function
-                uint32_t tmp_pixel = pixel_getter( pSrfce, ox, oy, xs, ys );
+                uint32_t tmp_pixel = pixel_getter( pSrfce, ox, oy, w, h, xs, ys );
                 // scale in integer numbers if so required
                 for (int y_scale = 0; y_scale < scale; y_scale++) {
                     for (int x_scale = 0; x_scale < scale; x_scale++) {
