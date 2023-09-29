@@ -17,6 +17,9 @@
  *
  * Joseph21
  * december 4, 2022
+ *
+ * Change trace:
+ * 12/10/2022 - Little correction to flc::Sprite::Sample()
  */
 
 #include "SGE_Sprite.h"
